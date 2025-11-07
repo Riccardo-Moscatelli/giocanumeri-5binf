@@ -1,28 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Random;
+
 public class GiocaNumeri {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
+        Random rn = new Random();
+        int num = rn.nextInt(11);
+        System.out.print(num);
+        System.out.println("inizio gioco");
 
-        System.out.println("INIZIA IL GIOCO");
-
-        Giocatore g1 = new Giocatore("Franco");
+        GestoreGioco gg = new GestoreGioco(num);
+        Giocatore g1 = new Giocatore("Francesco", gg);
+        Giocatore g2 = new Giocatore("Pietro", gg);
         g1.start();
-        System.out.println("INIZIA IL GIOCO");
-        Giocatore g2 = new Giocatore("Gino");
         g2.start();
-
         try {
             g1.join();
-
-        } catch (InterruptedException e) {
-            System.out.println("errore");
-        }
-        try {
             g2.join();
-
         } catch (InterruptedException e) {
-            System.out.println("errore");
+            System.out.println("errore nell interruzione del thread");
         }
-        System.out.println("FINE GIOCO");
+
+        System.out.println("fine gioco");
     }
 }

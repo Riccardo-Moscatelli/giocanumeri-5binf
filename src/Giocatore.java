@@ -1,36 +1,47 @@
 import java.util.Scanner;
 
-public class Giocatore extends Thread {
-    //attributi
-    private final GameManager gm;
-    private int punteggio;
+public class Giocatore extends Thread{
     private String nome;
+    private int punteggio;
+    GestoreGioco gg;
 
-    //metodi
-    public Giocatore(String nome, GameManager gestore) {
-        this.punteggio = 0;
+    public Giocatore(String nome){
         this.nome = nome;
+        this.punteggio = 0;
     }
 
-    public void comunica() {
-        System.out.println("sono il giocatore " + nome + " e ho iniziato il gioco");
-        System.out.println(this);
+    public Giocatore(String nome, GestoreGioco gg){
+        this.nome = nome;
+        this.punteggio = 0;
+        this.gg = gg;
     }
-    public void gioca() {
-        System.out.println("inseriscu un numero:");
+
+    public void comunica(){System.out.println(" Sono il giocatore " + nome);}
+    public int getPunteggio() { return punteggio; }
+    public String getNome() { return nome; }
+    private void gioca() {
+        System.out.println(" Sono il giocatore " + nome + " Inserisci un numero ");
         Scanner input = new Scanner(System.in);
         int num = input.nextInt();
-        System.out.println("numero scelto da:" + nome);
-        gm.verifica(num, this);
+
+        System.out.println(" Ho scelto il numero " + num);
+        gg.verifica(num);
     }
-        public void run() {
-                comunica();
-                try {
-                    sleep(5000);
-                } catch (InterruptedException e) {
-                    System.err.println("errore nella fase di sleeping");
-                }
 
+    @Override
+    public void run(){
+        //
+        super.run();
+        //Il giocatore si presenta
+        comunica();
 
-            }
+        //
+        try {
+            sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+
+        gioca();
+    }
+}
