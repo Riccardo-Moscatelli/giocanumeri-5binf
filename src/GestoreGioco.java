@@ -6,11 +6,11 @@ public class GestoreGioco {
     }
 
     public void verifica(int num){
-        System.out.println("verifica");
+        System.out.println("Verifica");
         if(num==numeroVincente){
-            System.out.println("hai vinto");
+            System.out.println("Hai vinto");
         }else{
-            System.out.println("hai perso");
+            System.out.println("Hai perso");
         }
 
     }

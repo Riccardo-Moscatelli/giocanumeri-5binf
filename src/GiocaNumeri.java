@@ -5,11 +5,10 @@ public class GiocaNumeri {
         Random rn = new Random();
         int num = rn.nextInt(11);
         System.out.print(num);
-        System.out.println("inizio gioco");
-
+        System.out.println("Inizio gioco");
         GestoreGioco gg = new GestoreGioco(num);
-        Giocatore g1 = new Giocatore("Francesco", gg);
-        Giocatore g2 = new Giocatore("Pietro", gg);
+        Giocatore g1 = new Giocatore("Elisa", gg);
+        Giocatore g2 = new Giocatore("Giulia", gg);
         g1.start();
         g2.start();
         try {
@@ -19,6 +18,6 @@ public class GiocaNumeri {
             System.out.println("errore nell interruzione del thread");
         }
 
-        System.out.println("fine gioco");
+        System.out.println("FINE gioco");
     }
 }

@@ -16,15 +16,15 @@ public class Giocatore extends Thread{
         this.gg = gg;
     }
 
-    public void comunica(){System.out.println(" Sono il giocatore " + nome);}
+    public void comunica(){System.out.println(" Giocatore " + nome);}
     public int getPunteggio() { return punteggio; }
     public String getNome() { return nome; }
     private void gioca() {
-        System.out.println(" Sono il giocatore " + nome + " Inserisci un numero ");
+        System.out.println(" Sono il giocatore " + nome + "Inserisci un numero ");
         Scanner input = new Scanner(System.in);
         int num = input.nextInt();
 
-        System.out.println(" Ho scelto il numero " + num);
+        System.out.println(" Scelto il numero " + num);
         gg.verifica(num);
     }
 
